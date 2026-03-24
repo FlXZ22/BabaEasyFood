@@ -1,0 +1,13 @@
+# OS/Editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Dev temporanei  
+*.py
+*.txt
+.env
+
+# Build futuri
+dist/
+build/
