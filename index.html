@@ -55,7 +55,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
 
   <!-- Font Awesome 6 -->
@@ -86,6 +86,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main-content">Vai al contenuto principale</a>
 
   <!-- ===== LOADING SCREEN ===== -->
   <div id="loading-screen">
@@ -103,14 +104,14 @@
   </div>
 
   <!-- ===== NAVBAR ===== -->
-  <nav id="navbar">
-    <div class="nav-container">
+  <nav id="navbar" aria-label="Navigazione principale">
+    <div class="nav-container nav-shell">
       <a href="#home" class="nav-logo">
         <span class="logo-baba">BABA</span>
         <span class="logo-easy">EASY</span>
         <span class="logo-food">FOOD</span>
       </a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <button class="nav-toggle" id="navToggle" aria-label="Apri il menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav-links" id="navLinks">
@@ -125,42 +126,54 @@
     </div>
   </nav>
 
+  <main id="main-content">
   <!-- ===== HERO ===== -->
   <section id="home" class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-particles" id="particles"></div>
-    <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-      <div class="hero-badge">
-        <i class="fas fa-store"></i> Cash &amp; Carry B2B
-      </div>
-      <h1 class="hero-title">
-        Rifornisci il Tuo<br />
-        <span class="hero-highlight">Locale in 24h</span>
-      </h1>
-      <p class="hero-subtitle">
-        500+ prodotti all'ingrosso, consegna in tutta la Lombardia.<br />
-        Per ristoranti, bar e pizzerie — ordina oggi, ricevi domani.
-      </p>
-      <div class="hero-buttons">
-        <a href="#contatti" class="btn btn-primary">
-          <i class="fab fa-whatsapp"></i> Ordina su WhatsApp
-        </a>
-        <a href="#servizi" class="btn btn-secondary">
-          <i class="fas fa-boxes-stacked"></i> Scopri i Prodotti
-        </a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <span class="stat-num">24h</span>
-          <span class="stat-label">Consegna Rapida</span>
+    <div class="hero-media" aria-hidden="true">
+      <div class="hero-bg active" data-hero-image="0"></div>
+      <div class="hero-bg" data-hero-image="1"></div>
+      <div class="hero-overlay"></div>
+      <div class="hero-particles hero-dust" id="particles"></div>
+    </div>
+    <div class="container hero-shell">
+      <div class="hero-copy" data-aos="fade-up" data-aos-duration="1000">
+        <div class="hero-badge">
+          <i class="fas fa-store"></i> Cash &amp; Carry B2B
         </div>
-        <div class="hero-stat">
-          <span class="stat-num">500+</span>
-          <span class="stat-label">Prodotti</span>
+        <p class="hero-kicker">Cinisello Balsamo · Forniture per ristoranti, bar e pizzerie</p>
+        <h1 class="hero-title">
+          Rifornisci il Tuo
+Locale in 24h
+        </h1>
+        <p class="hero-subtitle">
+          Stock affidabile, ordini rapidi e supporto diretto per la ristorazione in tutta la Lombardia. Dal ritiro in magazzino alla consegna, il servizio resta semplice e preciso.
+        </p>
+        <div class="hero-mobile-inline-stats" aria-label="Dati principali">
+          <span>24h rapida</span>
+          <span>500+ prodotti</span>
+          <span>10+ province</span>
         </div>
-        <div class="hero-stat">
-          <span class="stat-num">10+</span>
-          <span class="stat-label">Province Servite</span>
+        <div class="hero-buttons">
+          <a href="#contatti" class="btn btn-primary">
+            <i class="fab fa-whatsapp"></i> Ordina su WhatsApp
+          </a>
+          <a href="#servizi" class="btn btn-secondary">
+            <i class="fas fa-boxes-stacked"></i> Vedi il Catalogo
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="stat-num">24h</span>
+            <span class="stat-label">Consegna rapida</span>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-num">500+</span>
+            <span class="stat-label">Referenze disponibili</span>
+          </div>
+          <div class="hero-stat">
+            <span class="stat-num">10+</span>
+            <span class="stat-label">Province servite</span>
+          </div>
         </div>
       </div>
     </div>
@@ -320,36 +333,50 @@
         <div class="section-divider white"></div>
         <p class="section-desc">Tre buoni motivi per affidarti a noi per la tua attività</p>
       </div>
-      <div class="usps-grid">
-        <div class="usp-card" data-aos="zoom-in" data-aos-delay="100">
-          <div class="usp-icon">
-            <i class="fas fa-tags"></i>
+      <div class="usp-scene" id="uspScene">
+        <div class="usp-stage">
+        <div class="usp-card usp-card-left" data-usp-card="left">
+          <div class="usp-stat">
+            <div class="usp-icon">
+              <i class="fas fa-tags"></i>
+            </div>
+            <div class="usp-value">
+              <div class="usp-counter" data-target="30">0</div>
+              <div class="usp-unit">%</div>
+            </div>
           </div>
-          <div class="usp-counter" data-target="30">0</div>
-          <div class="usp-unit">%</div>
           <h3>Risparmio Garantito</h3>
           <p>Prezzi all'ingrosso fino al 30% inferiori rispetto alla grande distribuzione. Il tuo margine di guadagno
             aumenta subito.</p>
         </div>
-        <div class="usp-card featured" data-aos="zoom-in" data-aos-delay="200">
-          <div class="usp-icon">
-            <i class="fas fa-boxes-stacked"></i>
+        <div class="usp-card featured usp-card-center" data-usp-card="center">
+          <div class="usp-stat">
+            <div class="usp-icon">
+              <i class="fas fa-boxes-stacked"></i>
+            </div>
+            <div class="usp-value">
+              <div class="usp-counter" data-target="500">0</div>
+              <div class="usp-unit">+</div>
+            </div>
           </div>
-          <div class="usp-counter" data-target="500">0</div>
-          <div class="usp-unit">+</div>
           <h3>Prodotti Disponibili</h3>
           <p>Oltre 500 referenze sempre disponibili in magazzino. Tutto ciò di cui hai bisogno in un unico posto, senza
             attese.</p>
         </div>
-        <div class="usp-card" data-aos="zoom-in" data-aos-delay="300">
-          <div class="usp-icon">
-            <i class="fas fa-map-location-dot"></i>
+        <div class="usp-card usp-card-right" data-usp-card="right">
+          <div class="usp-stat">
+            <div class="usp-icon">
+              <i class="fas fa-map-location-dot"></i>
+            </div>
+            <div class="usp-value">
+              <div class="usp-counter" data-target="10">0</div>
+              <div class="usp-unit">+</div>
+            </div>
           </div>
-          <div class="usp-counter" data-target="10">0</div>
-          <div class="usp-unit">+</div>
           <h3>Province Servite</h3>
           <p>Copriamo tutta la Lombardia e oltre: Milano, Bergamo, Como, Lecco, Brescia, Verona, Novara, Monza, Pavia e
             Crema.</p>
+        </div>
         </div>
       </div>
       <div class="perche-extra" data-aos="fade-up" data-aos-delay="400">
@@ -719,48 +746,56 @@
           </a>
         </div>
         <div class="contatti-form" data-aos="fade-left" data-aos-delay="200">
-          <form id="contactForm" class="contact-form">
+          <form id="contactForm" class="contact-form" novalidate>
             <div class="form-row">
               <div class="form-group">
                 <label for="nome">Nome *</label>
                 <input type="text" id="nome" name="nome" placeholder="Il tuo nome" required />
+                <p class="field-error" aria-live="polite"></p>
               </div>
               <div class="form-group">
                 <label for="cognome">Cognome *</label>
                 <input type="text" id="cognome" name="cognome" placeholder="Il tuo cognome" required />
+                <p class="field-error" aria-live="polite"></p>
               </div>
             </div>
             <div class="form-group">
               <label for="azienda">Nome Attività</label>
               <input type="text" id="azienda" name="azienda" placeholder="Ristorante, Bar, Pizzeria..." />
+              <p class="field-error" aria-live="polite"></p>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="telefono">Telefono *</label>
                 <input type="tel" id="telefono" name="telefono" placeholder="+39 000 000 0000" required />
+                <p class="field-error" aria-live="polite"></p>
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="tua@email.it" />
+                <p class="field-error" aria-live="polite"></p>
               </div>
             </div>
             <div class="form-group">
               <label for="citta">Città</label>
               <input type="text" id="citta" name="citta" placeholder="Milano, Bergamo, Como..." />
+              <p class="field-error" aria-live="polite"></p>
             </div>
             <div class="form-group">
               <label for="messaggio">Messaggio *</label>
               <textarea id="messaggio" name="messaggio" rows="4"
                 placeholder="Descrivi i prodotti di cui hai bisogno o fai una domanda..." required></textarea>
+              <p class="field-error" aria-live="polite"></p>
             </div>
             <button type="submit" class="btn btn-primary btn-full">
               <i class="fas fa-paper-plane"></i> Invia Richiesta
             </button>
             <p class="form-note">* Campi obbligatori. I tuoi dati sono al sicuro con noi.</p>
+            <p class="form-status" id="formStatus" aria-live="polite"></p>
           </form>
-          <div id="formSuccess" class="form-success" style="display:none;">
+          <div id="formSuccess" class="form-success" hidden>
             <i class="fas fa-circle-check"></i>
-            <h3>Messaggio Inviato!</h3>
+            <h3>Messaggio inviato</h3>
             <p>Grazie per averci contattato. Ti risponderemo al più presto.</p>
           </div>
         </div>
@@ -772,61 +807,60 @@
   <footer class="footer">
     <div class="footer-top">
       <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
+        <div class="footer-shell">
+          <div class="footer-brand-panel">
+            <span class="footer-eyebrow">Cash &amp; Carry B2B</span>
             <div class="footer-logo">
               <span class="logo-baba">BABA</span>
               <span class="logo-easy">EASY</span>
               <span class="logo-food">FOOD</span>
             </div>
-            <p>Il tuo partner Cash &amp; Carry B2B per la ristorazione in Lombardia. Qualità, convenienza e
-              affidabilità.</p>
+            <p class="footer-lead">Forniture affidabili per la ristorazione professionale in Lombardia, con un magazzino operativo e un supporto diretto per ordini rapidi e continui.</p>
             <div class="footer-social">
-              <a href="https://www.instagram.com/babaeasyfood/" target="_blank" rel="noopener" aria-label="Instagram"><i
-                  class="fab fa-instagram"></i></a>
-              <a href="https://www.tiktok.com/@babaeasyfood" target="_blank" rel="noopener" aria-label="TikTok"><i
-                  class="fab fa-tiktok"></i></a>
-              <a href="https://www.facebook.com/p/BABA-EASY-FOOD-100070875776282/" target="_blank" rel="noopener"
-                aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-              <a href="https://wa.me/393347535528" target="_blank" rel="noopener" aria-label="WhatsApp"><i
-                  class="fab fa-whatsapp"></i></a>
+              <a href="https://www.instagram.com/babaeasyfood/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="https://www.tiktok.com/@babaeasyfood" target="_blank" rel="noopener" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+              <a href="https://www.facebook.com/p/BABA-EASY-FOOD-100070875776282/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+              <a href="https://wa.me/393347535528" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
+            <a class="footer-cta" href="#contatti">Richiedi una fornitura</a>
           </div>
-          <div class="footer-links">
-            <h4>Navigazione</h4>
-            <ul>
-              <li><a href="#chi-siamo">Chi Siamo</a></li>
-              <li><a href="#servizi">Servizi</a></li>
-              <li><a href="#perche-noi">Perché Noi</a></li>
-              <li><a href="#zone">Zone Servite</a></li>
-              <li><a href="#galleria">Galleria</a></li>
-              <li><a href="#contatti">Contatti</a></li>
-            </ul>
-          </div>
-          <div class="footer-links">
-            <h4>Prodotti</h4>
-            <ul>
-              <li><a href="#servizi">Salse &amp; Condimenti</a></li>
-              <li><a href="#servizi">Spezie &amp; Aromi</a></li>
-              <li><a href="#servizi">Pasta &amp; Cereali</a></li>
-              <li><a href="#servizi">Oli &amp; Conserve</a></li>
-              <li><a href="#servizi">Bevande</a></li>
-              <li><a href="#servizi">Surgelati</a></li>
-            </ul>
-          </div>
-          <div class="footer-contact">
-            <h4>Contatti</h4>
-            <div class="footer-contact-item">
-              <i class="fas fa-location-dot"></i>
-              <span>Via Modigliani, 7<br />Cinisello Balsamo (MI)</span>
+          <div class="footer-grid">
+            <div class="footer-links">
+              <h4>Navigazione</h4>
+              <ul>
+                <li><a href="#chi-siamo">Chi Siamo</a></li>
+                <li><a href="#servizi">Servizi</a></li>
+                <li><a href="#perche-noi">Perché Noi</a></li>
+                <li><a href="#zone">Zone Servite</a></li>
+                <li><a href="#galleria">Galleria</a></li>
+                <li><a href="#contatti">Contatti</a></li>
+              </ul>
             </div>
-            <div class="footer-contact-item">
-              <i class="fas fa-phone"></i>
-              <a href="tel:+390261239430">02 612 3943</a>
+            <div class="footer-links">
+              <h4>Prodotti</h4>
+              <ul>
+                <li><a href="#servizi">Salse &amp; Condimenti</a></li>
+                <li><a href="#servizi">Spezie &amp; Aromi</a></li>
+                <li><a href="#servizi">Pasta &amp; Cereali</a></li>
+                <li><a href="#servizi">Oli &amp; Conserve</a></li>
+                <li><a href="#servizi">Bevande</a></li>
+                <li><a href="#servizi">Surgelati</a></li>
+              </ul>
             </div>
-            <div class="footer-contact-item">
-              <i class="fab fa-whatsapp"></i>
-              <a href="https://wa.me/393347535528" target="_blank" rel="noopener">+39 334 753 5528</a>
+            <div class="footer-contact">
+              <h4>Contatti</h4>
+              <div class="footer-contact-item">
+                <i class="fas fa-location-dot"></i>
+                <span>Via Modigliani, 7<br />Cinisello Balsamo (MI)</span>
+              </div>
+              <div class="footer-contact-item">
+                <i class="fas fa-phone"></i>
+                <a href="tel:+390261239430">02 612 3943</a>
+              </div>
+              <div class="footer-contact-item">
+                <i class="fab fa-whatsapp"></i>
+                <a href="https://wa.me/393347535528" target="_blank" rel="noopener">+39 334 753 5528</a>
+              </div>
             </div>
           </div>
         </div>
@@ -834,12 +868,15 @@
     </div>
     <div class="footer-bottom">
       <div class="container">
-        <p>&copy; 2026 Baba Easy Food S.r.l.s. | P.IVA 11691160961 | REA MI-2619382 | Via Amedeo Modigliani, 7 – 20092
-          Cinisello Balsamo (MI)</p>
+        <div class="footer-bottom-grid">
+          <p>&copy; 2026 Baba Easy Food S.r.l.s. | P.IVA 11691160961 | REA MI-2619382</p>
+          <p>Via Amedeo Modigliani, 7 – 20092 Cinisello Balsamo (MI)</p>
+        </div>
         <p class="footer-legal">Tutti i diritti riservati. Sito realizzato per uso professionale B2B.</p>
       </div>
     </div>
   </footer>
+  </main>
 
   <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
   <a href="https://wa.me/393347535528?text=Ciao%20Baba%20Easy%20Food%2C%20vorrei%20informazioni%20sui%20vostri%20prodotti."
