@@ -1,20 +1,26 @@
 export async function onRequestPost(context) {
   const { request, env } = context;
-  
-  const data = await request.json();
-  const { nome, cognome, telefono, email, attivita, citta, messaggio } = data;
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${env.RESEND_API_KEY}`,
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      from: "onboarding@resend.dev",        // dominio test Resend, funziona subito
-      to: "tua@email.it",                    // dove arriva la notifica
-      subject: `Nuova richiesta da ${nome} ${cognome}`,
-      html: `
+  try {
+    const data = await request.json();
+    const { nome, cognome, telefono, email, attivita, citta, messaggio } = data;
+
+    // Controllo sicurezza: se la chiave manca, restituisci errore chiaro
+    if (!env.RESEND_API_KEY) {
+      return new Response(JSON.stringify({ error: "API Key mancante" }), { status: 500 });
+    }
+
+    const res = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${env.RESEND_API_KEY}`,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        from: "onboarding@resend.dev", 
+        to: "tua@email.it", // RICORDA: Cambiala con la tua vera mail!
+        subject: `Nuova richiesta da ${nome} ${cognome}`,
+        html: `
 <body style="margin:0;padding:0;background:#F2EDE6;font-family:Georgia,'Times New Roman',serif;">
 <table width="100%" cellpadding="0" cellspacing="0">
     <tr><td align="center" style="padding:32px 16px;">
@@ -67,12 +73,22 @@ export async function onRequestPost(context) {
 </table>
 </body>
 `
-    })
-  });
+      })
+    });
 
-  if (!res.ok) {
-    return new Response(JSON.stringify({ ok: false }), { status: 500 });
+    const result = await res.json();
+
+    if (!res.ok) {
+      return new Response(JSON.stringify({ ok: false, error: result }), { status: res.status });
+    }
+
+    return new Response(JSON.stringify({ ok: true }), { 
+      status: 200,
+      headers: { "Content-Type": "application/json" }
+    });
+
+  } catch (err) {
+    // Questo cattura errori di parsing JSON o problemi di rete
+    return new Response(JSON.stringify({ ok: false, error: err.message }), { status: 500 });
   }
-
-  return new Response(JSON.stringify({ ok: true }), { status: 200 });
 }
