@@ -747,6 +747,7 @@ Locale in 24h
         </div>
         <div class="contatti-form" data-aos="fade-left" data-aos-delay="200">
           <form id="contactForm" class="contact-form" novalidate>
+            <input type="hidden" name="numero_ordine" id="numero_ordine_input" />
             <div class="form-row">
               <div class="form-group">
                 <label for="nome">Nome *</label>
@@ -892,6 +893,9 @@ Locale in 24h
 
   <!-- AOS.js -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!-- Main JS -->
   <script src="script.js"></script>
