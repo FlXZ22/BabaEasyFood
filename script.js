@@ -305,7 +305,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const form = document.getElementById('contactForm');
   const success = document.getElementById('formSuccess');
   const status = document.getElementById('formStatus');
-  if (!form || !success || !status) return;
+  const numeroOrdineInput = document.getElementById('numero_ordine_input');
+  if (!form || !success || !status || !numeroOrdineInput) return;
+
+  if (typeof emailjs === 'undefined') {
+    status.textContent = 'Servizio email non disponibile al momento.';
+    return;
+  }
+
+  emailjs.init('eZj3iFFTzaQ_smgme');
 
   const validators = {
     nome: function (value) {
@@ -360,6 +368,9 @@ document.addEventListener('DOMContentLoaded', function () {
     event.preventDefault();
     status.textContent = '';
 
+    success.hidden = true;
+    form.hidden = false;
+
     const fields = Array.from(form.querySelectorAll('input, textarea'));
     const valid = fields.every(validateInput);
     if (!valid) {
@@ -371,15 +382,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
     const submitButton = form.querySelector('button[type="submit"]');
     const originalContent = submitButton.innerHTML;
-    submitButton.disabled = true;
-    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Invio in corso';
+    const numeroOrdine = Math.floor(10000 + Math.random() * 90000);
+    numeroOrdineInput.value = String(numeroOrdine);
 
-    window.setTimeout(function () {
-      form.hidden = true;
-      success.hidden = false;
-      submitButton.disabled = false;
-      submitButton.innerHTML = originalContent;
-    }, 1200);
+    submitButton.disabled = true;
+    submitButton.textContent = 'Invio in corso... ⏳';
+
+    emailjs.sendForm('service_5zvirpm', 'template_35efos5', form)
+      .then(function () {
+        form.reset();
+        numeroOrdineInput.value = '';
+        status.textContent = '';
+        form.hidden = true;
+        success.hidden = false;
+      })
+      .catch(function () {
+        status.textContent = 'Errore nell\'invio. Riprova.';
+      })
+      .finally(function () {
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalContent;
+      });
   });
 })();
 
