@@ -689,7 +689,7 @@ Locale in 24h
         <div class="section-divider"></div>
         <p class="section-desc">Scrivi su WhatsApp o compila il modulo — risposta garantita entro 2 ore.</p>
       </div>
-      <div class="contatti-grid">
+      <div class="contatti-grid" id="contactMobileSlider">
         <div class="contatti-info" data-aos="fade-right" data-aos-delay="100">
           <div class="contact-card">
             <div class="contact-item">
@@ -760,10 +760,17 @@ Locale in 24h
                 <p class="field-error" aria-live="polite"></p>
               </div>
             </div>
-            <div class="form-group">
-              <label for="azienda">Nome Attività</label>
-              <input type="text" id="azienda" name="azienda" placeholder="Ristorante, Bar, Pizzeria..." />
-              <p class="field-error" aria-live="polite"></p>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="azienda">Nome Attività</label>
+                <input type="text" id="azienda" name="azienda" placeholder="Ristorante, Bar, Pizzeria..." />
+                <p class="field-error" aria-live="polite"></p>
+              </div>
+              <div class="form-group">
+                <label for="citta">Città</label>
+                <input type="text" id="citta" name="citta" placeholder="Milano, Bergamo, Como..." />
+                <p class="field-error" aria-live="polite"></p>
+              </div>
             </div>
             <div class="form-row">
               <div class="form-group">
@@ -776,11 +783,6 @@ Locale in 24h
                 <input type="email" id="email" name="email" placeholder="tua@email.it" />
                 <p class="field-error" aria-live="polite"></p>
               </div>
-            </div>
-            <div class="form-group">
-              <label for="citta">Città</label>
-              <input type="text" id="citta" name="citta" placeholder="Milano, Bergamo, Como..." />
-              <p class="field-error" aria-live="polite"></p>
             </div>
             <div class="form-group">
               <label for="messaggio">Messaggio *</label>
@@ -800,6 +802,10 @@ Locale in 24h
             <p>Grazie per averci contattato. Ti risponderemo al più presto.</p>
           </div>
         </div>
+      </div>
+      <div class="contatti-mobile-dots" id="contactMobileDots" aria-label="Navigazione sezione contatti">
+        <button type="button" class="contatti-dot is-active" data-contact-slide="0" aria-label="Mostra contatti" aria-pressed="true"></button>
+        <button type="button" class="contatti-dot" data-contact-slide="1" aria-label="Mostra modulo" aria-pressed="false"></button>
       </div>
     </div>
   </section>

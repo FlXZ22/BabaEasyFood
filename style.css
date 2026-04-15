@@ -713,6 +713,10 @@ ul {
   align-items: center;
 }
 
+.contatti-mobile-dots {
+  display: none;
+}
+
 .chi-siamo-text,
 .zone-list,
 .contatti-info,
@@ -1845,8 +1849,7 @@ ul {
   .hero-shell,
   .hero-stats,
   .chi-siamo-values,
-  .province-grid,
-  .form-row {
+  .province-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2017,7 +2020,8 @@ ul {
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    padding: 4px 18px 10px 0;
+    padding: 4px 10px 0;
+    scroll-padding-inline: 10px;
   }
 
   .servizi-grid::-webkit-scrollbar,
@@ -2029,7 +2033,7 @@ ul {
   }
 
   .servizi-grid {
-    margin-right: -6px;
+    margin-right: 0;
   }
 
   .service-card,
@@ -2118,6 +2122,26 @@ ul {
     min-height: auto;
   }
 
+  .service-card,
+  .usp-card,
+  .usp-card-left,
+  .usp-card-center,
+  .usp-card-right,
+  .province-item,
+  .review-card,
+  .review-card.featured,
+  .contact-card,
+  .contact-form,
+  .zone-cta {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.82);
+  }
+
+  .gallery-item,
+  .gallery-item.tall,
+  .gallery-item.wide {
+    box-shadow: none;
+  }
+
   .reviews-note {
     justify-content: center;
     text-align: center;
@@ -2160,8 +2184,114 @@ ul {
     margin-top: 18px;
   }
 
-  .contatti-form {
+  .contatti-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 16px;
+    align-items: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 10px 0;
+    scroll-padding-inline: 10px;
+  }
+
+  .contatti-grid::-webkit-scrollbar {
     display: none;
+  }
+
+  .contatti-info,
+  .contatti-form {
+    flex: 0 0 100%;
+    width: 100%;
+    min-width: 100%;
+    align-self: flex-start;
+    scroll-snap-align: start;
+  }
+
+  .contact-card,
+  .contact-form {
+    padding: 22px;
+  }
+
+  .form-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .form-group {
+    margin-bottom: 12px;
+  }
+
+  .form-group label {
+    margin-bottom: 6px;
+    font-size: 0.86rem;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 13px 15px;
+    border-radius: 18px;
+  }
+
+  .form-group textarea {
+    min-height: 104px;
+  }
+
+  .field-error,
+  .form-status {
+    min-height: 14px;
+    margin-top: 5px;
+    font-size: 0.78rem;
+  }
+
+  .field-error:empty,
+  .form-status:empty {
+    display: none;
+    min-height: 0;
+    margin-top: 0;
+  }
+
+  .form-note {
+    margin-top: 8px;
+    font-size: 0.8rem;
+  }
+
+  .form-group:last-of-type {
+    margin-bottom: 8px;
+  }
+
+  .contact-form .btn {
+    min-height: 48px;
+  }
+
+  .contatti-mobile-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+  }
+
+  .contatti-dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(38, 65, 45, 0.2);
+    box-shadow: inset 0 0 0 1px rgba(38, 65, 45, 0.08);
+    cursor: pointer;
+    transition: transform var(--transition), background-color var(--transition), width var(--transition);
+  }
+
+  .contatti-dot.is-active {
+    width: 28px;
+    background: var(--green-800);
+    transform: scale(1.02);
   }
 }
 
@@ -2252,8 +2382,6 @@ ul {
   }
 
   .service-card,
-  .contact-card,
-  .contact-form,
   .review-card,
   .usp-card,
   .zone-cta {
